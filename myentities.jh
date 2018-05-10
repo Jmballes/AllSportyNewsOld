@@ -1,0 +1,36 @@
+entity Category{
+	title String required,
+	description String required,
+	imagen Blob required,
+
+}
+entity Message{
+	title String required,
+	url String required,
+	description String,
+	fecha LocalDate,
+	imagen Blob required
+}
+
+entity Points
+
+entity ExtendedUser 
+
+relationship ManyToOne{
+	Message{author required} to User,
+	Points {person required} to User,
+	Points {message required} to Message ,
+	Message{parent} to Message
+	
+}
+
+relationship OneToMany{
+	Message{category required} to Category
+}
+relationship OneToOne{
+	Category{author required} to User
+}
+paginate Message with pagination
+
+service Message with serviceClass
+service Points with serviceClass
